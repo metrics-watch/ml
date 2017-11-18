@@ -4,6 +4,7 @@ import numpy as np
 
 trainingpath = "./data/sample_pre_grid.json"
 errorpath = "./data/sample_post_grid.json"
+revertedpath = "./data/sample_post_post_grid.json";
 
 def read_data(path):
   events = []
@@ -20,5 +21,6 @@ def pathToArray(path):
 
 training_data = pathToArray(trainingpath)
 error_data = pathToArray(errorpath)
+reverted_data = pathToArray(revertedpath);
 
 

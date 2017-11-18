@@ -39,11 +39,11 @@ rl.on("close", () => {
     .filter(event => event.url === "GRID");
 
   events
-    .filter(event => event.datetime.isBefore("2017-11-01"))
+    .filter(event => event.datetime.isSameOrBefore("2017-11-01"))
     .forEach(event => preoutput.write(JSON.stringify(event) + "\n"));
 
   events
-    .filter(event => event.datetime.isBetween("2017-11-01", "2017-11-09"))
+    .filter(event => event.datetime.isBetween("2017-11-02", "2017-11-09"))
     .forEach(event => postoutput.write(JSON.stringify(event) + "\n"));
 
     events

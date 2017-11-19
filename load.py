@@ -2,10 +2,6 @@ import json
 import tensorflow as tf
 import numpy as np
 
-trainingpath = "./data/sample_pre_grid.json"
-errorpath = "./data/sample_post_grid.json"
-revertedpath = "./data/sample_post_post_grid.json";
-
 def read_data(path):
   events = []
   with open(path, 'r') as f:
@@ -13,14 +9,10 @@ def read_data(path):
       events.append(json.loads(line))
   return events
 
-def eventToVector(event):
-  return [event["status"], event["minuteofday"], event["dayofweek"], event["responsetime"]]
+def event_to_vector(event):
+  return [event["status"], event["minuteofday"], event["dayofweek"], event["responsetime"], event["method"], event["url"]]
 
-def pathToArray(path):
-  return np.array(list(map(eventToVector, read_data(path))))
-
-training_data = pathToArray(trainingpath)
-error_data = pathToArray(errorpath)
-reverted_data = pathToArray(revertedpath);
+def path_to_array(path):
+  return np.array(list(map(event_to_vector, read_data(path))))
 
 

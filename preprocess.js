@@ -1,7 +1,7 @@
 const fs = require("fs");
 const readline = require("readline");
 const moment = require("moment");
-const inputpath = "./data/sample.json";
+const inputpath = "./data/small_sample.json";
 const preoutputpath = "./data/sample_pre_grid.json";
 const postoutputpath = "./data/sample_post_grid.json";
 const postpostoutputpath = "./data/sample_post_post_grid.json";
@@ -35,8 +35,7 @@ rl.on("close", () => {
       datetime: moment(event._time),
       url: cleanpath.exec(event.url)[1],
       responsetime: Number.parseInt(requesttime.exec(event._raw)[1], 10)
-    }))
-    .filter(event => event.url === "GRID");
+    }));
 
   events
     .filter(event => event.datetime.isSameOrBefore("2017-11-01"))
@@ -46,7 +45,7 @@ rl.on("close", () => {
     .filter(event => event.datetime.isBetween("2017-11-02", "2017-11-09"))
     .forEach(event => postoutput.write(JSON.stringify(event) + "\n"));
 
-    events
+  events
     .filter(event => event.datetime.isAfter("2017-11-09"))
     .forEach(event => postpostoutput.write(JSON.stringify(event) + "\n"));
 

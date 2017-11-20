@@ -10,7 +10,7 @@ def read_data(path):
   return events
 
 def event_to_vector(event):
-  return [event["status"], event["minuteofday"], event["dayofweek"], event["responsetime"], event["method"], event["url"]]
+  return [event["status"], event["responsetime"], event["minuteofday"], event["dayofweek"], event["method"], event["url"]]
 
 def path_to_array(path):
   return np.array(list(map(event_to_vector, read_data(path))))

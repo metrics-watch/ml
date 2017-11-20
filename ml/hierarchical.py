@@ -13,11 +13,11 @@ def route_distances(routes):
         ), routes
       )
     )
-  ).__invert__().astype(int) * 1000000
+  ).__invert__().astype(int) * 10000
   return equal
 
 def distance_by_route(X):
-  numerical_vector = np.array(list(map(lambda event: event[:4], X)))
+  numerical_vector = np.array(list(map(lambda event: event[:2], X)))
   route_vector = np.array(list(map(lambda event: event[4] + " " + event[5], X)))
 
   geometric_distance = euclidean_distances(numerical_vector)
@@ -29,6 +29,11 @@ def distance_by_route(X):
   return absolute_distance
 
 def calculate_cluster_distribution(labels):
-  return labels
+  _, counts = np.unique(labels, return_counts=True)
+  counts = np.array(counts) 
+  total = counts.sum()
+  relative = counts / total
+  return relative
 
-model = AgglomerativeClustering(n_clusters=100,affinity=distance_by_route,linkage="average")
+#model = AgglomerativeClustering(n_clusters=150)
+model = AgglomerativeClustering(n_clusters=50,affinity=distance_by_route,linkage="complete")

@@ -1,0 +1,24 @@
+{
+  "name": "metricswatch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "moment": "^2.19.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "train": "node train.js",
+    "analyze": "node analyze.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metrics-watch/ml.git"
+  },
+  "author": "MetricsWatch",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/metrics-watch/ml/issues"
+  },
+  "homepage": "https://github.com/metrics-watch/ml#readme"
+}
